@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="mdl/material.min.css">
+      <script src="mdl/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/jobs.js"></script>
+      <script src="js/resources.js"></script>
+      <script src="js/buildings.js"></script>
+      <script src="js/research.js"></script>
+      <script src="js/core.js"></script>
+    </head>
+    <body onload="civ_interval()">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer" style="width:300px">
+          <span class="mdl-layout-title">Title</span>
+          <nav class="mdl-navigation">
+            <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
+              <tbody id="r_table">
+              </tbody>
+            </table>
+          </nav>
+        </div>
+        <main class="mdl-layout__content" style="margin-left:300px">
+          <div class="page-content">
+            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+              <div class="mdl-tabs__tab-bar">
+                <a href="#b_tab" class="mdl-tabs__tab is-active">Buildings</a>
+                <a href="#Research" class="mdl-tabs__tab">Research</a>
+                <a href="#j_tab" class="mdl-tabs__tab">Jobs</a>
+              </div>
+              <div class="mdl-tabs__panel is-active" id="b_tab">
+                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
+                  <tbody id="b_table">
+                  </tbody>
+                </table>
+              </div>
+              <div class="mdl-tabs__panel" id="Research">
+                <div class="mdl-cell mdl-cell--2-col">
+                  <button class="mdl-button mdl-js-button mdl-button--raised RBuy">
+                    ButtonR
+                  </button>
+                </div>
+              </div>
+              <div class="mdl-tabs__panel" id="j_tab">
+                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
+                  <tbody id="j_table">
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </main>
+      </div>
+    </body>
+</html>
