@@ -23,11 +23,21 @@
           </nav>
         </div>
         <main class="mdl-layout__content" style="margin-left:300px">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">Civ</span>
+            </div>
+            <div class="mdl-layout__content">
+              <!-- Title -->
+              <span id="description"></span>
+            </div>
+          </header>
           <div class="page-content">
             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
               <div class="mdl-tabs__tab-bar">
                 <a href="#b_tab" class="mdl-tabs__tab is-active">Buildings</a>
-                <a href="#Research" class="mdl-tabs__tab">Research</a>
+                <a href="#u_tab" class="mdl-tabs__tab">Research</a>
                 <a href="#j_tab" class="mdl-tabs__tab">Jobs</a>
               </div>
               <div class="mdl-tabs__panel is-active" id="b_tab">
@@ -36,12 +46,11 @@
                   </tbody>
                 </table>
               </div>
-              <div class="mdl-tabs__panel" id="Research">
-                <div class="mdl-cell mdl-cell--2-col">
-                  <button class="mdl-button mdl-js-button mdl-button--raised RBuy">
-                    ButtonR
-                  </button>
-                </div>
+              <div class="mdl-tabs__panel" id="u_tab">
+                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
+                  <tbody id="u_table">
+                  </tbody>
+                </table>
               </div>
               <div class="mdl-tabs__panel" id="j_tab">
                 <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">

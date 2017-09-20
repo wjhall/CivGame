@@ -39,19 +39,36 @@ var jobs={};
 jobs={
   j_ga: new Job_Class({
     name:"Gatherer",
-    description:"TODO",
+    description:"TODO j_ga",
     enabled:true,
     amount:1,
     cost:{
-      r_pl:10
+      r_fd:10
     },
     multiplier:1.1,
     produce:{
-      r_pl:1.25,
+      r_fd:1.25,
       r_st:0.05
     },
     consume:{
-      r_pl:1.0
+      r_fd:1.0
+    }
+  }),
+  j_wd: new Job_Class({
+    name:"Wood dude",
+    description:"TODO j_wd",
+    enabled:false,
+    amount:0,
+    cost:{
+      r_fd:20,
+      r_st:5
+    },
+    multiplier:1.1,
+    produce:{
+      r_wd:0.5
+    },
+    consume:{
+      r_fd:1.0
     }
   })
 };

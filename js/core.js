@@ -1,18 +1,20 @@
 var job_update = true;
 var building_update = true;
+var delta_update=true;
+var capacity_update=true;
+var resource_update=true;
+var research_update=true;
 
 function civ_interval(){
-  //civ_setup();
   setInterval(civ_main,50);
-}
-
-function civ_setup(){
-  $('.BBuy').on("click",function(){buy_building(this.name)})
 }
 
 function civ_main(){
   increment_values()
-  update_resources()
+  if (resource_update){
+    update_resources()
+    resource_update=false;
+  }
   if (job_update){
     update_jobs()
     job_update=false;
@@ -21,27 +23,58 @@ function civ_main(){
     update_buildings()
     building_update=false;
   }
+  if (research_update){
+    update_research()
+    research_update=false;
+  }
+  update_res_values()
 }
 
 function increment_values(){
-  for (var resource in resources) {
-    var delta=0
-    for (var job in jobs){
-      delta+=jobs[job].amount*(jobs[job].produces(resource)-jobs[job].consumes(resource))
+  if(delta_update){
+    for (var resource in resources) {
+      var delta=0;
+      for (var job in jobs){
+        delta+=jobs[job].amount*(jobs[job].produces(resource)-jobs[job].consumes(resource))
+      }
+      resources[resource].delta=delta;
     }
-    resources[resource].delta=delta//+=resource_delta[resource]/20;
-    resources[resource].amount+=resources[resource].delta/20
   };
+  delta_update=false;
+  if(capacity_update){
+    for (var resource in resources) {
+      var capacity=0;
+      for (var building in buildings){
+        capacity+=buildings[building].amount*buildings[building].cap(resource)
+      }
+      resources[resource].capacity=capacity;
+    }
+  };
+  capacity_update=false;
+  for(var resource in resources){
+    resources[resource].increment()
+  }
+}
+
+function update_res_values(){
+  for (var resource in resources) {
+    if (resources[resource].enabled){
+      $('#'+resource+'_value').html(resource_amt_format(resources[resource].amount)+'/'+
+      resource_amt_format(resources[resource].capacity))
+      $('#'+resource+'_delta').html(resource_delta_format(resources[resource].delta))
+    }
+  }
 }
 
 function update_resources(){
   $("#r_table").empty()
   for (var resource in resources) {
     if (resources[resource].enabled){
-      var markup='<tr>\
+      var markup='<tr title="'+resources[resource].description+'">\
       <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
-      resources[resource].name+'</td><td>'+
-      resource_amt_format(resources[resource].amount)+'</td><td>'+
+      resources[resource].name+'</td><td id="'+resource+'_value">'+
+      resource_amt_format(resources[resource].amount)+'/'+
+      resource_amt_format(resources[resource].capacity)+'</td><td id="'+resource+'_delta">'+
       resource_delta_format(resources[resource].delta)+'</td></tr>'
       $("#r_table").append(markup)
     }
@@ -52,14 +85,14 @@ function update_jobs(){
   $("#j_table").empty()
   for (var job in jobs) {
     if (jobs[job].enabled){
-      var markup='<tr><td>\
+      var markup='<tr title="'+jobs[job].description+'"><td>\
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_job" \
       name="'+job+'" value=1>\
         <i class="material-icons">add</i>\
       </button></td>\
       <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
-      jobs[job].name+'</td><td>'+
-      jobs[job].amount+'</td></tr>'
+      jobs[job].name+
+      '</td><td>'+jobs[job].amount+'</td></tr>'
       $("#j_table").append(markup)
     }
   };
@@ -70,13 +103,35 @@ function update_buildings(){
   $("#b_table").empty()
   for (var building in buildings) {
     if (buildings[building].enabled){
-      var markup='<tr>\
+      var markup='<tr title="'+buildings[building].description+'"><td>\
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_building" \
+      name="'+building+'" value=1>\
+        <i class="material-icons">add</i>\
+      </button></td>\
       <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
       buildings[building].name+'</td><td>'+
       buildings[building].amount+'</td></tr>'
       $("#b_table").append(markup)
     }
   };
+  $('.buy_building').on("click",function(){buy_building(this.name)})
+}
+
+function update_research(){
+  $("#u_table").empty()
+  for (var research in researches) {
+    if (researches[research].visible){
+      var markup='<tr title="'+researches[research].description+'"><td>\
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_research" \
+      name="'+research+'" value=1>\
+        <i class="material-icons">add</i>\
+      </button></td>\
+      <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
+      researches[research].name+'</td></tr>'
+      $("#u_table").append(markup)
+    }
+  };
+  $('.buy_research').on("click",function(){buy_research(this.name)})
 }
 
 function resource_amt_format(resource_value){
@@ -106,8 +161,21 @@ function resource_delta_format(resource_value){
 function buy_job(j_id){
   resources=jobs[j_id].buy(resources)
   job_update=true;
+  delta_update=true;
 }
 
-function buy_research(){
+function buy_research(u_id){
+  [resources,jobs,buildings,researches]=researches[u_id].buy(resources,jobs,buildings,researches)
+  job_update = true;
+  building_update = true;
+  delta_update=true;
+  capacity_update=true;
+  resource_update=true;
+  research_update=true;
+}
 
+function buy_building(b_id){
+  resources=buildings[b_id].buy(resources)
+  building_update=true;
+  capacity_update=true;
 }
