@@ -71,7 +71,7 @@ function update_resources(){
   for (var resource in resources) {
     if (resources[resource].enabled){
       var markup='<tr title="'+resources[resource].description+'">\
-      <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
+      <td >'+
       resources[resource].name+'</td><td id="'+resource+'_value">'+
       resource_amt_format(resources[resource].amount)+'/'+
       resource_amt_format(resources[resource].capacity)+'</td><td id="'+resource+'_delta">'+
@@ -86,11 +86,11 @@ function update_jobs(){
   for (var job in jobs) {
     if (jobs[job].enabled){
       var markup='<tr title="'+jobs[job].description+'"><td>\
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_job" \
+      <button class="btn buy_job" \
       name="'+job+'" value=1>\
-        <i class="material-icons">add</i>\
+      add\
       </button></td>\
-      <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
+      <td >'+
       jobs[job].name+
       '</td><td>'+jobs[job].amount+'</td></tr>'
       $("#j_table").append(markup)
@@ -104,11 +104,11 @@ function update_buildings(){
   for (var building in buildings) {
     if (buildings[building].enabled){
       var markup='<tr title="'+buildings[building].description+'"><td>\
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_building" \
+      <button class="btn buy_building" \
       name="'+building+'" value=1>\
-        <i class="material-icons">add</i>\
+      add\
       </button></td>\
-      <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
+      <td>'+
       buildings[building].name+'</td><td>'+
       buildings[building].amount+'</td></tr>'
       $("#b_table").append(markup)
@@ -122,11 +122,11 @@ function update_research(){
   for (var research in researches) {
     if (researches[research].visible){
       var markup='<tr title="'+researches[research].description+'"><td>\
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab buy_research" \
+      <button class="btn buy_research" \
       name="'+research+'" value=1>\
-        <i class="material-icons">add</i>\
+        add\
       </button></td>\
-      <td class=&quot;mdl-data-table__cell--non-numeric&quot;>'+
+      <td>'+
       researches[research].name+'</td></tr>'
       $("#u_table").append(markup)
     }
