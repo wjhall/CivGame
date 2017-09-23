@@ -1,67 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-      <link rel="stylesheet" href="mdl/material.min.css">
-      <script src="mdl/material.min.js"></script>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <script src="js/jquery-3.2.1.min.js"></script>
-      <script src="js/jobs.js"></script>
+      <title>CivGame</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="js/jobs.js"></script>
       <script src="js/resources.js"></script>
       <script src="js/buildings.js"></script>
       <script src="js/research.js"></script>
       <script src="js/core.js"></script>
     </head>
     <body onload="civ_interval()">
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-        <div class="mdl-layout__drawer" style="width:300px">
-          <span class="mdl-layout-title">Title</span>
-          <nav class="mdl-navigation">
-            <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
+      <div class="container">
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand">CivGame</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+        <div class="row">
+          <div class="col-sm-3">
+            <div id="r_tab">
+            <table class="table">
               <tbody id="r_table">
               </tbody>
             </table>
-          </nav>
+          </div>
         </div>
-        <main class="mdl-layout__content" style="margin-left:300px">
-          <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-              <!-- Title -->
-              <span class="mdl-layout-title">Civ</span>
+        <div class="col-sm-9">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#b_tab" >Buildings</a></li>
+            <li><a data-toggle="tab" href="#u_tab">Research</a></li>
+            <li><a data-toggle="tab" href="#j_tab" >Jobs</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="b_tab" class="tab-pane fade in active">
+              <table class="table">
+                <tbody id="b_table">
+                </tbody>
+              </table>
             </div>
-            <div class="mdl-layout__content">
-              <!-- Title -->
-              <span id="description"></span>
+            <div  class="tab-pane fade" id="u_tab">
+              <table class="table" >
+                <tbody id="u_table">
+                </tbody>
+              </table>
             </div>
-          </header>
-          <div class="page-content">
-            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-              <div class="mdl-tabs__tab-bar">
-                <a href="#b_tab" class="mdl-tabs__tab is-active">Buildings</a>
-                <a href="#u_tab" class="mdl-tabs__tab">Research</a>
-                <a href="#j_tab" class="mdl-tabs__tab">Jobs</a>
-              </div>
-              <div class="mdl-tabs__panel is-active" id="b_tab">
-                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
-                  <tbody id="b_table">
-                  </tbody>
-                </table>
-              </div>
-              <div class="mdl-tabs__panel" id="u_tab">
-                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
-                  <tbody id="u_table">
-                  </tbody>
-                </table>
-              </div>
-              <div class="mdl-tabs__panel" id="j_tab">
-                <table class="mdl-data-table mdl-js-data-tablemdl-shadow--2dp" style="width:300px">
-                  <tbody id="j_table">
-                  </tbody>
-                </table>
-              </div>
-
+            <div class="tab-pane fade" id="j_tab">
+              <table class="table">
+                <tbody id="j_table">
+                </tbody>
+              </table>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </body>
 </html>
