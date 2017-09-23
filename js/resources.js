@@ -18,6 +18,14 @@ class Resources_Class{
 var resources={};
 // name, description, id, enabled, ammount, delta
 resources={
+  r_pp: new Resources_Class({
+    name:"Population",
+    description:"TODO r_pp",
+    enabled:true,
+    capacity:0,
+    amount:1,
+    delta:0
+  }),
   r_fd: new Resources_Class({
     name:"Food",
     description:"TODO r_fd",

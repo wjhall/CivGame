@@ -16,10 +16,14 @@ class Job_Class{
         return resources
       }
     }
+    if(resources["r_pp"].amount==resources["r_pp"].capacity){
+      return resources
+    }
     for(var resource in this.cost){
       resources[resource].amount-=this.cost[resource]
     }
     this.amount+=1;
+    resources["r_pp"].amount+=1;
     return resources
   };
 

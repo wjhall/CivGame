@@ -88,7 +88,7 @@ function update_jobs(){
       var markup='<tr title="'+jobs[job].description+'"><td>\
       <button class="btn buy_job" \
       name="'+job+'" value=1>\
-      add\
+      +1\
       </button></td>\
       <td >'+
       jobs[job].name+
@@ -106,7 +106,7 @@ function update_buildings(){
       var markup='<tr title="'+buildings[building].description+'"><td>\
       <button class="btn buy_building" \
       name="'+building+'" value=1>\
-      add\
+      +1\
       </button></td>\
       <td>'+
       buildings[building].name+'</td><td>'+
@@ -124,7 +124,7 @@ function update_research(){
       var markup='<tr title="'+researches[research].description+'"><td>\
       <button class="btn buy_research" \
       name="'+research+'" value=1>\
-        add\
+        +\
       </button></td>\
       <td>'+
       researches[research].name+'</td></tr>'
