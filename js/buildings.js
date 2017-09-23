@@ -32,35 +32,50 @@ buildings={
   b_ss: new Building_Class({
     name:"Simple Shelter",
     description:"TODO b_ss",
-    enabled:true,
-    amount:1,
+    enabled:true,    amount:1,
     cost:{
-      r_fd:10,
-      r_st:5
+      r_fd:10,      r_st:5
     },
     multiplier:1.2,
     capacity:{
-      r_fd:50,
-      r_st:10,
-      r_wd:5,
-      r_pp:2
+      r_fd:50,      r_st:10,      r_wd:5,      r_pp:2
     }
   }),
   b_ht: new Building_Class({
     name:"Sturdy Hut",
     description:"TODO b_ht",
-    enabled:false,
-    amount:0,
+    enabled:false,    amount:0,
     cost:{
-      r_wd:50,
-      r_st:50
+      r_wd:50,      r_st:50
     },
     multiplier:1.2,
     capacity:{
-      r_fd:100,
-      r_st:25,
-      r_wd:20,
-      r_pp:5
+      r_fd:100,      r_st:25,      r_wd:20,      r_pp:5
+    }
+  }),
+  b_cb: new Building_Class({
+    name:"Cabin",
+    description:"TODO b_cb",
+    enabled:false,    amount:0,
+    cost:{
+      r_wd:300,      r_st:100
+    },
+    multiplier:1.2,
+    capacity:{
+      r_fd:100,      r_st:25,      r_wd:20,      r_pp:10
+    }
+  })
+  ,
+  b_st: new Building_Class({
+    name:"Store",
+    description:"TODO b_st",
+    enabled:false,    amount:0,
+    cost:{
+      r_wd:300,      r_st:100
+    },
+    multiplier:1.2,
+    capacity:{
+      r_fd:200,      r_st:100,      r_wd:100
     }
   })
 };
