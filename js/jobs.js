@@ -36,6 +36,11 @@ class Job_Class{
     var value=this.consume[resource]
     return value==undefined ? 0 : value
   };
+
+  getDesc(){
+    var dStr='<div class="col-sm-3">'+this.name+" "+this.description+'</div>'
+    return dStr
+  }
 }
 
 var jobs={};

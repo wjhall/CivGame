@@ -85,7 +85,7 @@ function update_jobs(){
   $("#j_table").empty()
   for (var job in jobs) {
     if (jobs[job].enabled){
-      var markup='<tr title="'+jobs[job].description+'"><td>\
+      var markup='<tr value="'+job+'" id="'+job+'_desc"><td>\
       <button class="btn buy_job" \
       name="'+job+'" value=1>\
       +1\
@@ -97,6 +97,12 @@ function update_jobs(){
     }
   };
   $('.buy_job').on("click",function(){buy_job(this.name)})
+  for (var job in jobs){
+    $('#'+job+'_desc').on("mouseover",function(){
+      innerhtml=jobs[$(this).attr('value')].getDesc()
+      $('#DescBox').html(innerhtml)
+    });
+  }
 }
 
 function update_buildings(){
